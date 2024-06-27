@@ -261,6 +261,7 @@ function Parse(input) {
     };
   }
   function parse_atom() {
+    //распознается начало выражения (, или начало блока {, или if, или true-false, или lambda, или если не все перечисленное тогда let , или num, или str
     return maybe_call(function () {
       if (is_punc("(")) {
         input.next();
@@ -282,6 +283,7 @@ function Parse(input) {
     });
   }
   function maybe_binary(left, my_prec) {
+    //рспознается бинарное выражение
     //сюда в left передается parse_atom()
     let tok = is_op();
     if (tok) {
